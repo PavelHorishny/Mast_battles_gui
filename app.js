@@ -26,7 +26,13 @@ function createWindow() {
             protocol: "file:",
             slashes: true
         })
-    ).then(r => "error");
+    ).then(() => {
+        console.log("App page loaded successfully.");
+    })
+        .catch((err) => {
+            console.error("Failed to load app.html:", err);
+        });
+
 
     // Open the DevTools (optional)
     mainWindow.webContents.openDevTools();
@@ -52,3 +58,4 @@ app.on('activate', () => {
         createWindow();
     }
 });
+app.disableHardwareAcceleration();
